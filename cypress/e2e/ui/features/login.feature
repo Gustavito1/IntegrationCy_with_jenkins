@@ -8,7 +8,7 @@ Feature: Login functionality
             | username | password |
             | Admin    | admin123 |
         And click the login button
-        Then the user can see his profile name "Paul Collings"
+        Then the user can see his profile name "ggggg Collings"
 
     @UnhappyPath
     Scenario: Wrong username or password
