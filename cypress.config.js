@@ -16,10 +16,12 @@ module.exports = defineConfig({
     //Features path
     specPattern: "cypress/e2e/**/features/*.feature",
     //UI
-    baseUrl: "https://opensource-demo.orangehrmlive.com",
+    
     //API
     env: {
-      URL: "https://restful-booker.herokuapp.com"
+      baseUrl: "https://opensource-demo.orangehrmlive.com",
+      URL: "https://restful-booker.herokuapp.com",
+      
     },
     async setupNodeEvents(on, config) {
       // implement node event listeners here
