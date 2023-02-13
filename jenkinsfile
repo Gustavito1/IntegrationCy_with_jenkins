@@ -1,0 +1,35 @@
+pipeline{
+    agent any
+    
+    triggers{
+        cron('15 9 * * 1-5')
+    }
+
+    options{
+        ansiColor('xterm')
+    }
+
+    parameters{
+        choice(name: "BROWSER", choices: ['chrome','edge'], description: "Ejecucion en varios navegadores")
+    }
+
+    tools {nodejs "Node18"}
+
+    stages{
+        stage('Dependencies'){
+            steps{
+                bat "npm i"
+            }
+        }
+        stage('e2e Test'){
+            steps{
+                bat "npx cypress run --browser ${BROWSER}"
+            }
+        }
+        stage('Deploy'){
+            steps{
+                echo "Deploying the application"
+            }
+        }
+    }
+}
