@@ -1,0 +1,31 @@
+{
+  "name": "integracion",
+  "version": "1.0.0",
+  "description": "Integrando múltiples test",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "keywords": [
+    "javascript",
+    "cypress",
+    "cucumber",
+    "esbuild"
+  ],
+  "author": "Bryan Corrales",
+  "license": "ISC",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^15.1.3",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.1.5",
+    "cypress": "^12.5.1",
+    "esbuild": "^0.16.17"
+  },
+  "dependencies": {
+    "pg": "^8.9.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": [
+      "cypress/e2e/**/step-definitions/*.{js, ts}"
+    ]
+  }
+}
