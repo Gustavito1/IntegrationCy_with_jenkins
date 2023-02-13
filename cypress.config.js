@@ -49,7 +49,7 @@ module.exports = defineConfig({
     DB: {
       host: "localhost",
       user: "root",
-      password: "admin",
+      password: "root",
       database: "ecommerce"
     }
   },
