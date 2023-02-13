@@ -2,8 +2,8 @@ const { Given, When, Then } = require("@badeball/cypress-cucumber-preprocessor")
 import LoginPage from "../Pages/loginPage";
 
 Given("the login page is operative", () => {
-    cy.visit(Cypress.env('baseUrl/web/index.php/auth/login'));
-})
+    cy.visit(`${Cypress.env('baseUrl')}/web/index.php/auth/login`);
+})   /*${Cypress.env('URL')}/auth*/
 
 When("the user fill the login form", (datatable) => {
     datatable.hashes().forEach((row) => {
