@@ -2,7 +2,7 @@ const { Given, When, Then } = require("@badeball/cypress-cucumber-preprocessor")
 import LoginPage from "../Pages/loginPage";
 
 Given("the login page is operative", () => {
-    cy.visit({URL: '/web/index.php/auth/login'})
+    cy.visit({baseUrl: '/web/index.php/auth/login'})
 })
 
 When("the user fill the login form", (datatable) => {
