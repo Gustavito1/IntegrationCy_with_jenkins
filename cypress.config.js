@@ -5,6 +5,8 @@ const addCucumberPreprocessorPlugin =
 const createEsbuildPlugin =
   require("@badeball/cypress-cucumber-preprocessor/esbuild").createEsbuildPlugin;
 
+const mysql = require("mysql");  
+
 const pg = require("pg")
 module.exports = defineConfig({
   //Viewport
@@ -29,14 +31,26 @@ module.exports = defineConfig({
       on("file:preprocessor", bundler);
       //DATABASE
       on("task", {
-        DATABASE({ dbConfig, sql }) {
-          const client = new pg.Pool(dbConfig);
-          return client.query(sql);
-        },
-      });
-      await addCucumberPreprocessorPlugin(on, config);
+        DATABASE({dbConfig, sql}){
+          const client = mysql.createConnection(dbConfig);
+          return new Promise((resolve, reject) => {
+            client.query(sql, (error, results) => {
+              if(error) reject(error);
+              resolve(results);
+            })
+          })
+        }
+      })
 
+      on("file:preprocessor", bundler);
+      await addCucumberPreprocessorPlugin(on, config);
       return config;
+    },
+    DB: {
+      host: "localhost",
+      user: "root",
+      password: "admin",
+      database: "ecommerce"
     }
   },
 });
