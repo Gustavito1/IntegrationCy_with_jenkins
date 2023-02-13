@@ -7,7 +7,6 @@ const createEsbuildPlugin =
 
 const mysql = require("mysql");  
 
-const pg = require("pg")
 module.exports = defineConfig({
   //Viewport
   viewportWidth: 1280,
